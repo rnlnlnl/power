@@ -6,16 +6,65 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <script type="text/javascript">
-
-
-
-
-
-
+	
+	function joinFormCheck() {
+		var pw = document.getElementById("pw")
+		var name = document.getElementById("name");
+		var nick = document.getElementById("nickName")
+		var email = document.getElementById("email");
+		var address = document.getElementById("address");
+		var no = document.getElementById("no");
+		var not = document.getElementById("not");
+		
+		if (pw.value.length < 8 || pw.value.length > 15) {
+			alert("비밀번호는 8자이상 15자미만으로 작성하여 주십시오");
+			pw.value = "";
+			document.fr.pw.focus();
+			return false;
+		}
+		
+		if (name.value == "") {
+			alert("이름을 입력해 주세요.");
+			document.fr.name.focus();
+			return false;
+		}
+		
+		if (nick.value == "") {
+			alert("마켓에서 사용할 이름을 적어주세요.");
+			document.fr.nick.focus();
+			return false;
+		}
+		
+		if (email.value == "") {
+			alert("이메일을 입력해주세요.");
+			document.fr.email.focus();
+			return false;
+		}
+		
+		if (address.value == "") {
+			alert("주소를 입력해주세요");
+			document.fr.address.focus();
+			return false;
+		}
+		
+		if (no.checked) {
+			alert("약관에 동의해주세요.");
+			return false;
+		}
+		
+		if (not.checked) {
+			alert("약관에 동의해주세요.");
+			return false;
+		}
+		
+		
+	}
+	
+	
+	
+	
 </script>
 
-<fieldset>
-<legend class="title">회원가입</legend>
 <form action="${contextPath}member/addMember.do" method="post" id="joinform" name="fr">
 	<section>
 		<label for="id">아이디</label>
@@ -32,9 +81,6 @@
 		<br>
 		<label for="nickName">닉네임</label>
 		<input type="text" name="nickName" id="nickName" class="boxSize" required>
-		<br>
-		<label for="tel">전화번호</label>
-		<input type="text" name="tel" id="tel" class="boxSize" onblur="" required>
 		<br>
 		<label for="email">이메일</label>
 		<%-- API사용 --%>
@@ -99,10 +145,6 @@
 		
 		<input type="button" id="joinBtn" class="buttonBox" value="회원가입" onblur="">
 		<input type="reset" id="setBtn" class="buttonBox" value="취소하기">
-		 
-		
-		
-		
 	</section>
 
 
@@ -113,7 +155,7 @@
 
 </form>
 
-</fieldset>
+
 
 
 
