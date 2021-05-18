@@ -6,7 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <style>
- 
+  
 	#div1{width:500px; margin:10px;}
 	#div1{
 		height: 100px;
