@@ -23,7 +23,17 @@
 <script type="text/javascript">
 	
 	function pwpw2Check() {
-		var i;
+		var pw = document.getElementById;
+		var pw2 = document.getElementById;
+		
+		if (pw != pw2 ) {
+			$("#passCheck").html("비밀번호가 다릅니다.").css("color","red");
+			
+		}else{
+			$("#passCheck").html("비밀번호가 일치합니다.").css("color","red");
+		}
+		
+		
 
 	}
 	
@@ -107,10 +117,11 @@
 			<input type="text" name="id" id="id" class="boxSize" onblur="checkId();" required>
 		<br>
 		<label for="pw">비밀번호</label><br>
-			<input type="password" name="pw" id="pw" class="boxSize" onblur="checkPw();" required>
+			<input type="password" name="pw" id="pw" class="boxSize"  required>
 		<br>
 		<label for="pw2">비밀번호 재확인</label><br>
 			<input type="password" name="pw2" id="pw2" class="boxSize" onblur="pwpw2Check();" required>
+			<span id="passCheck"></span>
 		<br>
 		<label for="name">이름</label><br>
 			<input type="text" name="name" id="name" class="boxSize" required>
