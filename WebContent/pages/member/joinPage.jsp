@@ -35,7 +35,7 @@
 </script>
 
 
-
+<!-- 광고 약관동의 한후 회원가입 페이지로 넘어가게 하기 -->
 
 
 <div>
@@ -49,18 +49,16 @@
 		<h3>그럼 즐거운 쇼핑 되십시오.</h3>	
 	</div>
 	<br><br>
-	<!-- 따로 주소 넣어 줘야함 -->
-	<form action="" method="post">
-		<div class="form-group">
-		<label>아이디</label>
-		<input type="text" name="id" id="id" class="form-control" placeholder="아이디"><br>
+	<label>약관동의</label>
+	<section>
 		
-		<label>비밀번호</label>
-		<input type="password" name="pw" id="pw" class="form-control" placeholder="비밀번호"><br><br>
-		
-		<button type="button" id="loginSub" class="loginSubTrue">로그인</button>
-		</div>
-	</form>
+	</section>
+	<label>동의합니다.</label>
+	<input type="radio" name="Advertising">
+	<label>동의하지않습니다.</label>
+	<input type="radio" name="Advertising" checked="checked">
+	
+	
 	<button><a href="${contextPath}/member/joinForm.do">회원가입</a></button>
 	
 </div>

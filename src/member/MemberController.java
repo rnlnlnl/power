@@ -52,6 +52,11 @@ public class MemberController extends HttpServlet{
 		if (path.equals("/main.do")) { //main 페이지 요청시 이구문이 실행된다
 			String auth = (String)session.getAttribute("auth");
 			String id = (String)session.getAttribute("memberId");
+		
+		
+		
+		
+		
 		}
 		
 		
