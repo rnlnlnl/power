@@ -13,29 +13,33 @@
 <%-- 컨텍스트 패스 주소 정보 얻기 --%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 
+<style>
+	#div1{width:300px; margin:10px;}
+	#div1{
+		height: 100px;
+		overflow: auto;
+		border: 1px solid black;
+		padding: 10px;
+	}
+</style>
+
+<!-- 광고 약관동의 한후 회원가입 페이지로 넘어가게 하기 -->
 <script type="text/javascript">
-	//로그인 하기
-	$("#loginSub").click(function(){
-		
-		var id = $("#id").val();
-		var pw = $("#pw").val();
-		$.ajax({
-			type : "post",
-			url : "${}"
-			
-			
-			
-		})
-	})
 	
 	
 	
-	
+	function joing() {
+		if ($('input:radio[id=noSee]').is(':checked')) {
+			$('#join').hide();
+		}else{
+			$('#join').show();
+		}
+	}
 	
 </script>
 
 
-<!-- 광고 약관동의 한후 회원가입 페이지로 넘어가게 하기 -->
+
 
 
 <div>
@@ -50,16 +54,25 @@
 	</div>
 	<br><br>
 	<label>약관동의</label>
-	<section>
-		
-	</section>
+	<div id="div1">
+		<section>
+			<p>
+				<b>광고 수신에 동의 하십니까.</b>
+				Google Ads 및 지역 서비스 광고를 통해 계속 광고를 게재하려면 업데이트된 약관에 동의해야 합니다.
+				이용약관에 동의하지 않는 경우 동의할 때까지 캠페인이 일시중지될 수 있습니다.
+				Google Ads 및 지역 서비스 광고를 계속 게재하려면 최대한 빨리 약관을 검토하고 수락하시기 바랍니다.
+				새 이용약관의 검토 및 동의는 45일 내에 완료해야 합니다.
+				새 이용약관에 동의하지 않을 경우 더 이상 광고를 게재할 수 없으며 계정을 해지해야 합니다.
+				계정을 해지하려면 지원팀에 문의하세요.
+			</p>
+		</section>
+	</div>
 	<label>동의합니다.</label>
-	<input type="radio" name="Advertising">
+	<input type="radio" name="Advertising" id="see" onchange="joing()">
 	<label>동의하지않습니다.</label>
-	<input type="radio" name="Advertising" checked="checked">
+	<input type="radio" name="Advertising" id="noSee" checked="checked" onchange="joing()"><br>
 	
-	
-	<button><a href="${contextPath}/member/joinForm.do">회원가입</a></button>
+	<button id="join" hidden=""><a href="${contextPath}/member/joinForm.do">회원가입</a></button>
 	
 </div>
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+//컨텍스트 패스가 /member 로 시작하는 모든 요청은 이 서블릿에서 처리합니다
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet{
 

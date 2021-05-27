@@ -25,7 +25,7 @@
 			<c:choose>
 				<c:when test="${memberId ==null}">
 					<li>
-						<a href="${contextPath}/include/login.jsp">로그인 |</a>
+						<a href="${contextPath}/include/login.do">로그인 |</a>
 					</li>
 					<li>
 						<a href="${contextPath}/member/joinPage.do">회원가입</a>
