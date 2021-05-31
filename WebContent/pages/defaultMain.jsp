@@ -7,7 +7,7 @@
 %>
 
 
-<c:set var="center" value="../include/defaultCenter.jsp"/>
+<%-- <c:set var="center" value="../include/defaultCenter.jsp"/> --%>
 
 
 

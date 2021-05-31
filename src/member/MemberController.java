@@ -2,6 +2,7 @@ package member;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,13 +54,14 @@ public class MemberController extends HttpServlet{
 			String auth = (String)session.getAttribute("auth");
 			String id = (String)session.getAttribute("memberId");
 		
+			
 		
-		
-		
+			nextPage = "../pages/defaultMain.jsp";
 		
 		}else if(path.equals("/joinPage.do")){
 			nextPage = "../pages/defaultMain.jsp";
 			request.setAttribute("center", "member/joinPage.jsp");
+			System.out.println("true");
 		}
 		else if(path.equals("/login.do")){
 			String id = request.getParameter("id");
@@ -72,6 +74,26 @@ public class MemberController extends HttpServlet{
 		
 		
 		
+		
+		
+		
+		
+		System.out.println("nextPgae : " + nextPage);
+
+		if (nextPage != null) {
+			if (isRedirect) {
+				System.out.println("리다이렉트 방식");
+				response.sendRedirect(nextPage);
+			}
+			else {
+				System.out.println("디스패치 방식");
+				RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+				// 실제 포워딩
+				dispatcher.forward(request, response);
+			}
+		}
+		
+		// 그런 다음 디스패치 방식으로 View페이지로 포워딩
 		
 		
 	}

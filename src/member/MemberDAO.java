@@ -48,6 +48,35 @@ public class MemberDAO {
 			System.out.println("MemberDAO : closeAll(자원 반납 작업)에서 에러" + e);
 		}
 	}// colseAll()메서드끝
+
+	public int login(String id, String pw) {
+		
+		int result = -1;
+		
+		// -1로그인 실패   -------  1로그인 성공
+		try {
+			conn = getConnection();
+			
+			sql = "select * from member where id = ?";
+			
+			pst = conn.prepareStatement(sql);
+			
+			pst.setString(1, id);
+			
+			res = pst.executeQuery();
+			
+			if (res.next()) {
+				if(pw.equals(res.getString("pw"))){
+					result = 1;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("MemberDAO : login(로그인 작업)에서 에러" + e);
+		} finally {
+			closeAll(conn, pst, res);
+		}
+		return result;
+	}
 	
 	
 	
