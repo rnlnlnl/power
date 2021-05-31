@@ -57,6 +57,16 @@ public class MemberController extends HttpServlet{
 		
 		
 		
+		}else if(path.equals("/joinPage.do")){
+			nextPage = "../pages/defaultMain.jsp";
+			request.setAttribute("center", "member/joinPage.jsp");
+		}
+		else if(path.equals("/login.do")){
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			
+			int result  = service.login(id, pw);
+			
 		}
 		
 		
