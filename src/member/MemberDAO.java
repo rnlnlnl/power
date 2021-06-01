@@ -78,7 +78,25 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
+	//권한 가져오기 
+	public String getAuth(String id){
+		String auth = null;
+		
+		try {
+			conn = getConnection();
+			
+			sql = "select auth from power where id = ?";
+			
+			pst = conn.prepareStatement(sql);
+			
+			
+			
+			
+		} catch (Exception e) {
+			
+		}
+		
+	}
 	
 	
 	

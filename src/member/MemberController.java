@@ -68,7 +68,7 @@ public class MemberController extends HttpServlet{
 			String pw = request.getParameter("pw");
 			
 			int result  = service.login(id, pw);
-			
+			String auth = service.getAuth(id).toUpperCase();
 		}
 		
 		

@@ -14,6 +14,13 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	public String getAuth(String id){
+		String auth = mDAO.getAuth(id);
+		return auth;
+	}
+	
+	
 
 	
 
