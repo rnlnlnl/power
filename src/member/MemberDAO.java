@@ -92,12 +92,17 @@ public class MemberDAO {
 			pst.setString(1, id);
 			res = pst.executeQuery();
 			
-			
+			if (res.next()) {
+				auth = res.getString(1);
+			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+			System.out.println("MemberDAO : getAuth(권한 얻기 작업)에서 에러" + e);
+		} finally {
+			closeAll(conn, pst, res);
 		}
-		
+		return auth;
 	}
 	
 	
