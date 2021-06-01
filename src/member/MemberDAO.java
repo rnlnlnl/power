@@ -89,6 +89,8 @@ public class MemberDAO {
 			
 			pst = conn.prepareStatement(sql);
 			
+			pst.setString(1, id);
+			res = pst.executeQuery();
 			
 			
 			
