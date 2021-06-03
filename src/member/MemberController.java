@@ -1,6 +1,7 @@
 package member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,6 +48,9 @@ public class MemberController extends HttpServlet{
 		MemberService service = new MemberService();
 		HttpSession session = request.getSession();
 		
+		// ajax / javascirpt 로 출력할 때 사용할 printWrite 객체 생성
+		PrintWriter out = response.getWriter();
+		
 		// pat if문 순서 : 페이지 이동 작업 - service 전달 -ajax 작업 순으로 정렬
 		
 		/* ############## 페이지 이동 ###############################################*/
@@ -74,6 +78,14 @@ public class MemberController extends HttpServlet{
 			
 			int result  = service.login(id, pw);
 			String auth = service.getAuth(id).toUpperCase();
+		}
+		else if(path.equals("/checkId.do")){// 아이디 중복 체크
+			String id = request.getParameter("id");
+			
+			int result = service.checkId(id);
+			
+			out.print(result);
+			return;
 		}
 		
 		

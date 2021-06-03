@@ -21,8 +21,65 @@
 
 
 <script type="text/javascript">
-	
+	var id_Check = false;
 	var pass_check = false;
+	
+	
+	function checkId() {
+		var id = $("#id").val();
+		
+		if (!validId($("#id").val())) {
+			$("#idCheck").css("color", "red");
+			$("#idCheck").text("3~15글자 사이의 아이디를 만들어주세요.");
+			id_Check = false;
+			return;
+		}else{
+			$.ajax({
+				type: "post",
+				uri: "${contextPath}/member/checkId.do",
+				data: ({
+					id: $("#id").val()
+				}),
+				dataType: "text",
+				success: function(result) {
+					if (result == 1) {
+						$("#idCheck").css("color", "green");
+						$("#idCheck").text("사용가능한 아이디 입니다.");
+						id_Check = true;
+					}else if(result == 0){
+						$("#idCheck").css("color", "red");
+						$("#idCheck").text("사용불가능한 아이디 입니다.");
+						id_Check = false;
+					}
+				}
+			})
+		}
+	}
+	
+	
+	function validId(inId) {
+		if (inId == "") {
+			return false;
+		}
+		
+		if (inId.length < 5 || inId.length >16) {
+			return false;
+		}
+		
+		for (var i = 0; i < inId.length; i++) {
+			if (inId.charAt(i) < '0' || inId.charAt(i) > '9' ) {
+				if (inId.charAt(i) < 'a' || inId.charAt(i) > 'z') {
+					return false;
+				}
+			}
+		}
+		return true; 
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -160,6 +217,7 @@
 	<section>
 		<label for="id">아이디</label><br>
 			<input type="text" name="id" id="id" class="boxSize" onblur="checkId();" required>
+			<span id="idCheck" name="idCheck">&nbsp;</span>
 		<br>
 		<label for="pw">비밀번호</label><br>
 			<input type="password" name="pw" id="pw" class="boxSize"  required autocomplete="off">

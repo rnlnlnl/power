@@ -105,7 +105,29 @@ public class MemberDAO {
 		return auth;
 	}
 	
-	
+	public int checkId(String id){
+		int check = 1;
+		
+		try {
+			conn = getConnection();
+			
+			sql = "select * from power where id = ?";
+			
+			pst  = conn.prepareStatement(sql);
+			pst.setString(1, id);
+			
+			res = pst.executeQuery();
+			
+			if (res.next()) {
+				check--;
+			}
+		} catch (Exception e) {
+			System.out.println("MemberDAO : checkId(중복아이디 검사 오류)"+e);
+		}finally{
+			closeAll(conn, pst, res);
+		}
+		return check;
+	}
 	
 	
 	

@@ -20,6 +20,10 @@ public class MemberService {
 		return auth;
 	}
 	
+	public int checkId(String id){
+		int result = mDAO.checkId(id);
+		return result;
+	}
 	
 
 	
